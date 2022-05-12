@@ -52,6 +52,7 @@
         color: blue;
     }
 
+
     .nextMonth {
         color: gray;
     }
