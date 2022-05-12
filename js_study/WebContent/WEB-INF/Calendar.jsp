@@ -53,6 +53,7 @@
     }
 
 
+
     .nextMonth {
         color: gray;
     }
