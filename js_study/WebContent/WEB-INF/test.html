@@ -1,8 +1,4 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
+<meta charset="utf-8">
 <style>
     .day {
         box-shadow: 0px 2px 0px black;
@@ -16,7 +12,6 @@
         width: 100px;
         padding-bottom: 100px;
         box-shadow: 2px 2px 2px black;
-
     }
 
     .today {
@@ -40,8 +35,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
-        
     }
 
     #sun {
@@ -52,16 +45,14 @@
         color: blue;
     }
 
-
-
     .nextMonth {
         color: gray;
     }
-    .add-list-modal
-    {
-        position:absolute;
-        top:20%;
-        left:50%;
+
+    .add-list-modal {
+        position: absolute;
+        top: 20%;
+        left: 50%;
         width: 300px;
         height: 500px;
         background-color: gray;
@@ -91,9 +82,12 @@
             </tbody>
         </table>
     </div>
-    <div class="add-list-modal" style="display: block;">
+    <div class="add-list-modal" id="modal" style="display: none;">
+        <h1>
+            <span id="month-span"></span>월/<span id="day-span"></span>일 <span id="daykor-span"></span>요일
+        </h1>
+        <button>x</button>
 
-        <h1></h1>
     </div>
 </body>
 <script>
@@ -105,13 +99,10 @@
         let year_div = document.getElementById("year");
         let month_div = document.getElementById("month");
 
-
         let calendar = document.getElementById("calendar");
         let crrentDate = new Date();
         let year = crrentDate.getFullYear();
         let month = crrentDate.getMonth();
-
-
 
         let day_string_arr = ['일', '월', '화', '수', '목', '금', '토'];
         let date = new Date(year, month);
@@ -129,17 +120,28 @@
 
                 if (startday == j) {
                     console.log(lastday);
-
+                    let dd = date.getDate();
                     td.innerHTML = date.getDate();
+
 
                     if (date.getMonth() == month) {
                         td.className += " currentDate";
+                        td.onclick = function (event) {
+                            let modal = document.getElementById("modal");
+                            let monthSpan = document.getElementById("month-span");
+                            let daySpan = document.getElementById("day-span");
+                            let month_div = document.getElementById("month");
+                            modal.style.display = "block";
+                            monthSpan.innerHTML=month_div.innerHTML;
+                            daySpan.innerHTML=event.target.innerHTML;
+                            
+
+                        }
                         if (crrentDate.getDate() == date.getDate()) {
 
                             td.className += " today";
                         }
                         if (j == 0) {
-                        	
                             td.id = "sun";
                         }
                         if (j == 6) {
@@ -148,7 +150,6 @@
                     } else {
                         td.className += " nextMonth";
                     }
-
 
                     if (date.getDate() > lastday) {
                         td.innerHTML = "";
@@ -161,16 +162,12 @@
                 }
                 tr.appendChild(td);
 
-
             }
             calendar.appendChild(tr);
 
         }
 
-
-
     }
-
 
     //마지막 일수 가져오기 
     function getLastday(year, month) {
@@ -183,10 +180,9 @@
             return lastdays[month];
         }
     }
-
-    function ModalToDolist()
+    function closeModal()
     {
-         
+        let modal = document.getElementById("modal");
+        modal.style.display="none";
     }
-
 </script>
