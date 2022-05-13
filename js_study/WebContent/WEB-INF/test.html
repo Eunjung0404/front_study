@@ -86,7 +86,10 @@
         <h1>
             <span id="month-span"></span>월/<span id="day-span"></span>일 <span id="daykor-span"></span>요일
         </h1>
-        <button>x</button>
+        <button onclick="closeModal()">x</button>
+        <div id="toDoList">
+
+        </div>
 
     </div>
 </body>
@@ -126,6 +129,7 @@
 
                     if (date.getMonth() == month) {
                         td.className += " currentDate";
+                        //날짜 클릭시 일정 입력하는 모달창 오픈
                         td.onclick = function (event) {
                             let modal = document.getElementById("modal");
                             let monthSpan = document.getElementById("month-span");
@@ -180,6 +184,7 @@
             return lastdays[month];
         }
     }
+    //일정등록 모달창 비활성화
     function closeModal()
     {
         let modal = document.getElementById("modal");
