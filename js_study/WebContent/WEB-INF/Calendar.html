@@ -49,7 +49,7 @@
         color: gray;
     }
 
-    .add-list-modal {
+    .modal {
         position: absolute;
         top: 20%;
         left: 50%;
@@ -82,25 +82,37 @@
             </tbody>
         </table>
     </div>
-    <div class="add-list-modal" id="modal" style="display: none;">
+    <!--일정list modal-->
+    <div class="modal" id="list-modal" style="display: none;">
         <h1>
             <span id="month-span"></span>월/<span id="day-span"></span>일 <span id="daykor-span"></span>요일
         </h1>
-        <button onclick="closeModal()">x</button>
+        <button onclick="closeModal('list-modal')">x</button>
         <h3>할 일</h3>
         <button>일정추가</button>
         <!--리스트 추가-->
         <div id="addtoDoList">
-        
+
+            
         </div>
-        
+
     </div>
+    <!--일정추가 modal-->
+    <div class="modal" id="addlist-modal">
+
+        <span>일정 추가</span>
+        <!--날짜 선택-->
+        <!--일정 명-->
+        <!--일정 상세-->
+        <!--일정 표시될 컬러-->
+    </div>
+
 </body>
 <script>
     window.onload = function () {
         createCalendar();
     }
-//일정 추가 폼 
+    //일정 추가 폼 
     function createCalendar() {
         let year_div = document.getElementById("year");
         let month_div = document.getElementById("month");
@@ -134,14 +146,14 @@
                         td.className += " currentDate";
                         //날짜 클릭시 일정 입력하는 모달창 오픈
                         td.onclick = function (event) {
-                            let modal = document.getElementById("modal");
+                            openModal("list-modal");
                             let monthSpan = document.getElementById("month-span");
                             let daySpan = document.getElementById("day-span");
                             let month_div = document.getElementById("month");
-                            modal.style.display = "block";
-                            monthSpan.innerHTML=month_div.innerHTML;
-                            daySpan.innerHTML=event.target.innerHTML;
-                            
+
+                            monthSpan.innerHTML = month_div.innerHTML;
+                            daySpan.innerHTML = event.target.innerHTML;
+
 
                         }
                         if (crrentDate.getDate() == date.getDate()) {
@@ -187,10 +199,14 @@
             return lastdays[month];
         }
     }
+    //모달창 오픈
+    function openModal(id) {
+        let modal = document.getElementById(id);
+        modal.style.display = "block";
+    }
     //일정등록 모달창 비활성화
-    function closeModal()
-    {
-        let modal = document.getElementById("modal");
-        modal.style.display="none";
+    function closeModal(id) {
+        let modal = document.getElementById(id);
+        modal.style.display = "none";
     }
 </script>
