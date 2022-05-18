@@ -1,0 +1,69 @@
+.day {
+    box-shadow: 0px 2px 0px black;
+    width: 100px;
+    height: 20px;
+    text-align: center;
+}
+
+.date {
+    /*border: 1px solid black;*/
+    width: 100px;
+    padding-bottom: 100px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.today {
+    background-color: gray;
+    color: white;
+}
+
+.currentDate:hover {
+    box-shadow: 1px 1px 1px black;
+    background-color: #EAEAEA;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.calendar_div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sun {
+    color: red;
+}
+
+#sat {
+    color: blue;
+}
+
+.nextMonth {
+    color: gray;
+}
+
+.modal {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    width: 500px;
+    height: 500px;
+    background-color:white;
+    box-shadow: 0px 0px 5px black;
+}
+.trcolor
+{
+    width: 15px;
+    height: 15px;
+    border-radius: 15px ;
+}
+.trcolor:hover
+{
+    border:1px solid black;
+    box-shadow: 0px 0px 5px black;
+}
