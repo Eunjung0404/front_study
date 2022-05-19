@@ -1,14 +1,25 @@
 
     window.onload = function () {
-        createCalendar();
+        createCalendar("","");
     }
-    //일정 추가 폼 
-    function createCalendar() {
+    //캘린더 만들기
+    function createCalendar(inputyear,inputmonth) {
+      
         let year_div = document.getElementById("year");
         let month_div = document.getElementById("month");
 
         let calendar = document.getElementById("calendar");
-        let crrentDate = new Date();
+      
+      
+        if((inputyear==null || inputyear=="")||(inputmonth==null || inputmonth==""))
+        {
+              //매개변수 입력이 안될경우
+            let crrentDate = new Date();
+        }else{
+
+            //매개변수 입력이 된경우
+            let crrentDate = new Date(inputyear,inputmonth);
+        }
         let year = crrentDate.getFullYear();
         let month = crrentDate.getMonth();
 
@@ -76,6 +87,11 @@
 
         }
 
+    }
+    //다음달로 넘기기
+    function nextMonth()
+    {
+        createCalendar()
     }
 
     //마지막 일수 가져오기 
