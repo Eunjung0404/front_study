@@ -29,6 +29,7 @@
 
         let day_string_arr = ['일', '월', '화', '수', '목', '금', '토'];
         let date = new Date(year, month);
+        let today=new Date();
         let startday = date.getDay();
         let day_string = date.getDay();
         month_div.innerText = month + 1;
@@ -61,7 +62,7 @@
 
 
                         }
-                        if (crrentDate.getDate() == date.getDate()) {
+                        if (today.getDate() == date.getDate() && today.getMonth()==date.getMonth() && today.getFullYear()==date.getFullYear()) {
 
                             td.className += " today";
                         }
