@@ -9,16 +9,20 @@
         let month_div = document.getElementById("month");
 
         let calendar = document.getElementById("calendar");
-      
+        let crrentDate;
       
         if((inputyear==null || inputyear=="")||(inputmonth==null || inputmonth==""))
         {
-              //매개변수 입력이 안될경우
-            let crrentDate = new Date();
+            crrentDate = new Date();
         }else{
 
-            //매개변수 입력이 된경우
-            let crrentDate = new Date(inputyear,inputmonth);
+           //month달에 nextyear이란 값이 들어오면 0으로 값넣기 ==1월만들기
+            if(inputmonth=='nextyear')
+            {
+                inputmonth=0;
+            }
+         //매개변수 입력이 된경우
+           crrentDate = new Date(inputyear,inputmonth);
         }
         let year = crrentDate.getFullYear();
         let month = crrentDate.getMonth();
@@ -62,12 +66,15 @@
                             td.className += " today";
                         }
                         if (j == 0) {
+                            //일요일 지정
                             td.id = "sun";
                         }
                         if (j == 6) {
+                            //토요일 지정
                             td.id = "sat";
                         }
                     } else {
+                        //다음 달에 해당하는 일에 css적용을 위한 class명 부여
                         td.className += " nextMonth";
                     }
 
@@ -85,15 +92,53 @@
             }
             calendar.appendChild(tr);
 
+            
         }
 
     }
     //다음달로 넘기기
     function nextMonth()
     {
-        createCalendar()
+        //현재 년도와 달을 가져옴
+        let year=document.getElementById("year").innerText;
+        let month=document.getElementById("month").innerText;
+     
+        console.log(year+","+parseInt(month));
+        let nextmonth='';
+        //현재달이 12월일때
+        if(month>=12)
+        {
+            //내년으로 넘어가게 값 세팅
+            nextmonth='nextyear';
+            year=parseInt(year)+1;
+        }else
+        {
+            nextmonth=parseInt(month);
+        }
+        
+        //console.log(nextmonth);
+        //기존에 그렸던 달력 삭제
+        clearCalendar();
+        //다음달 그리기
+        createCalendar(year,nextmonth);
     }
 
+    //달력 삭제
+    function clearCalendar()
+    {
+        //캘린더 tbody가져오기
+        let calendar_tbody=document.getElementById('calendar');
+        //자식요소 삭제를위해 기존 tbody의 length가져오기
+        let length=calendar_tbody.childNodes.length;
+        for(var i=0;i<length;i++)
+        {
+            //console.log(calendar_tbody.lastChild+i);
+            //자식 tr들 삭제
+            calendar_tbody.removeChild(calendar_tbody.lastChild);
+        }
+
+        
+    }
     //마지막 일수 가져오기 
     function getLastday(year, month) {
         let lastdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
