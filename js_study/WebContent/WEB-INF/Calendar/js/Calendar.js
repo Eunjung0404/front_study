@@ -11,7 +11,7 @@
         let calendar = document.getElementById("calendar");
         let crrentDate;
       
-        if((inputyear==null || inputyear=="")||(inputmonth==null || inputmonth==""))
+        if((inputyear==null || inputyear=="")||(inputmonth==null))
         {
             crrentDate = new Date();
         }else{
@@ -20,6 +20,12 @@
             if(inputmonth=='nextyear')
             {
                 inputmonth=0;
+            }
+
+            if(inputmonth=='prevyear')
+            {
+                //12월로 맞춰주기
+                inputmonth=11;
             }
          //매개변수 입력이 된경우
            crrentDate = new Date(inputyear,inputmonth);
@@ -122,6 +128,33 @@
         clearCalendar();
         //다음달 그리기
         createCalendar(year,nextmonth);
+    }
+    //이전달로 넘기기
+    function prevMonth()
+    {
+        //현재 년도와 달을 가져옴
+        let year=document.getElementById("year").innerText;
+        let month=document.getElementById("month").innerText;
+
+        console.log(year+","+parseInt(month));
+        let prevMonth='';
+        //현재달이 1월일때
+        if(month<=1)
+        {
+            //내년 12월로 넘어가도록 세팅
+          prevMonth='prevyear';
+            year=parseInt(year)-1;
+        }else
+        { 
+            prevMonth=parseInt(month)-2;
+            console.log(prevMonth);
+        }
+        
+        //console.log(nextmonth);
+        //기존에 그렸던 달력 삭제
+        clearCalendar();
+        //다음달 그리기
+        createCalendar(year,prevMonth);
     }
 
     //달력 삭제
