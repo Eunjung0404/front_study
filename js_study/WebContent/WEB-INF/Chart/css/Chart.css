@@ -16,6 +16,12 @@
     border-radius: 50%;
     transition: 0.3s;
 }
+
+.a{
+    position: absolute;
+    background-color: red;
+    transform: translate(-50%,-50%) rotateY(-40deg,50deg,50deg);
+}
 span.center
 {
     background: #fff;
@@ -28,3 +34,4 @@ span.center
     border-radius: 50%;
     transform: translate(-50%,-50%);
 }
+
