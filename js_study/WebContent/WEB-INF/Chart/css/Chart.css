@@ -42,3 +42,12 @@ span.center
      padding: 0px;
       border-spacing:0px;
 }
+
+.chartW
+{
+    height: 30px; 
+    width: 180px;
+    border: none;
+     padding: 0px;
+      border-spacing:0px;
+}
