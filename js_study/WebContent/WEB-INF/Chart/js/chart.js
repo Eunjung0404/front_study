@@ -18,7 +18,10 @@ const colorFn = (i, classname, color,color2) => {
     classname.style.background = "conic-gradient("+color +" " + i + "%,"+color2+" "+ i + "% 100%)";
   }
   
- 
+ function chartanimation()
+ {
+     
+ }
 
 makeChart(80, chart1, '#f5b914','red');
 makeChart(50, chart2, '#f5b914');
