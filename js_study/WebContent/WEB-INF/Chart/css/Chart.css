@@ -8,12 +8,14 @@ body {
     height: 120px;
     background-color: cadetblue;
 }
-.left{
-    width:100%;
-    height:100%;
+
+.left {
+    width: 100%;
+    height: 100%;
     background-color: gray;
 
 }
+
 .main {
     position: relative;
     padding: 5%;
@@ -22,7 +24,7 @@ body {
 
 .graph {
     display: flex;
-    padding: 15px;
+    padding: 12px;
     gap: 15px;
 }
 
@@ -57,6 +59,8 @@ span.center {
     border: none;
     padding: 0px;
     border-spacing: 0px;
+    text-align: center;
+    margin-left: auto; margin-right: auto;
 }
 
 
@@ -89,15 +93,32 @@ span.center {
 
 .tt {
     border-collapse: collapse;
-    border: 1px solid #444444;
+    border: 1px solid gray;
 }
 
 .tt td {
-    border: 1px solid #444444;
+    border: 1px solid gray;
     text-align: center;
 }
 
 .tt th {
-    border: 1px solid #444444;
+    border: 1px solid gray;
     text-align: center;
+}
+
+
+.title {
+    color: #177acb;
+    font-weight: bold;
+}
+.semititle{
+
+    background-color: #f3f7f8;
+    color:#2c73a1;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: normal;
+}
+.ta{
+    border-collapse: collapse;
 }
