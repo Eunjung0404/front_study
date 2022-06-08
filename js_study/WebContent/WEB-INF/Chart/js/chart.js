@@ -14,22 +14,23 @@ const makeChart = (percent1, percent2, percent3, classname) => {
             clearInterval(chartFn);
         }
     }, 10);
+    return chartFn;
 }
 // 참고 conic-gradient는 ie에서 지원하지 않음....
 const colorFn = (i, percent1, percent2, percent3, classname) => {
     let string = "";
 
     if (0 < i < percent1) {
-        string = "conic-gradient(#c0504d " + i + "%,#17375e " + i + "% 100%)";
+        string = "conic-gradient(#FF5E00 " + i + "%,#FFBB00 " + i + "% 100%)";
     }
     if (i >= percent1 && i < parseInt(percent1 + percent2)) {
 
-        string = "conic-gradient(#c0504d " + percent1 + "%,#177acb " + percent1 + "% " + i + "%,#17375e  " + i + "% " + percent3 + "%)";
+        string = "conic-gradient(#FF5E00 " + percent1 + "%,#6B9900 " + percent1 + "% " + i + "%,#FFBB00  " + i + "% " + percent3 + "%)";
 
     }
     if (i >= parseInt(percent1 + percent2) && i <= 100) {
 
-        string = "conic-gradient(#c0504d " + percent1 + "%,#177acb " + percent1 + "% " + parseInt(percent1 + percent2) + "%,#17375e " + parseInt(percent1 + percent2) + "% " + i + "%)";
+        string = "conic-gradient(#FF5E00 " + percent1 + "%,#6B9900 " + percent1 + "% " + parseInt(percent1 + percent2) + "%,#FFBB00 " + parseInt(percent1 + percent2) + "% " + i + "%)";
 
     }
     return string
@@ -45,15 +46,15 @@ function f_drawChart(percent1, percent2, percent3, id) {
 
     let chartFn = window.setInterval(function () {
         if (i <= percent1) {
-            td1.style = "height:" + parseInt(100 - i) + "%;width: 30px;background-color: #17375e;border:none;"
-            td2.style = "height:0%;width: 30px;background-color: #177acb;border:none;"
-            td3.style = "height:" + i + "%;width: 30px;background-color: #c0504d;border:none;"
+            td1.style = "height:" + parseInt(100 - i) + "%;width: 30px;background-color: #FFBB00;border:none;"
+            td2.style = "height:0%;width: 30px;background-color: #6B9900;border:none;"
+            td3.style = "height:" + i + "%;width: 30px;background-color: #FF5E00;border:none;"
             i++;
 
         }
         else if (i <= percent2) {
-            td1.style = "height:" + parseInt((100 - percent1) - i) + "%;width: 30px;background-color: #17375e;border:none;"
-            td2.style = "height:" + i + "%;width: 30px;background-color: #177acb;border:none;"
+            td1.style = "height:" + parseInt((100 - percent1) - i) + "%;width: 30px;background-color: #FFBB00;border:none;"
+            td2.style = "height:" + i + "%;width: 30px;background-color: #6B9900;border:none;"
             i++;
 
         }
